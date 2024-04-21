@@ -16,8 +16,8 @@ const Header = () => {
           <a href="">Contact</a>
         </div>
         <div className="right">
-          <a href="">Connexion</a>
-          <a href="" className="register">
+          <a href="/auth/login">Connexion</a>
+          <a href="/auth/register" className="register">
             S&apos;enregistrer
           </a>
           <div className="menuIcon">
@@ -31,8 +31,8 @@ const Header = () => {
             <a href="">Accueil</a>
             <a href="">A propos</a>
             <a href="">Contact</a>
-            <a href="">Connexion</a>
-            <a href="" className="register">
+            <a href="/auth/login">Connexion</a>
+            <a href="/auth/register" className="register">
               S&apos;enregistrer
             </a>
           </div>
