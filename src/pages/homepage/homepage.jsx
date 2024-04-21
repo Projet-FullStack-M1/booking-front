@@ -1,9 +1,13 @@
+import { Helmet } from "react-helmet-async";
 import Searchbar from "../../components/UI/searchbar/Searchbar";
 import styles from "./hompage.module.scss";
 
 const Homepage = () => {
   return (
     <div className={styles.homepage}>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <div className={styles.textContainer}>
         <div className={styles.wrapper}>
           <h1 className={styles.title}>
