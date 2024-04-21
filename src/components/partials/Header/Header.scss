@@ -22,7 +22,7 @@ nav {
     flex: 3;
     display: flex;
     align-items: center;
-    gap: 50px;
+    gap: 40px;
     .logo {
       font-weight: bold;
       display: flex;
@@ -47,7 +47,7 @@ nav {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    gap: 10px;
+    gap: 5px;
     background-color: #fcf5f3;
     height: 100%;
 
@@ -58,6 +58,11 @@ nav {
     a {
       padding: 12px 24px;
       margin: 20px;
+
+      @include sm {
+        padding: 8px 16px;
+        margin: 1px;
+      }
     }
 
     .register {
@@ -97,6 +102,7 @@ nav {
       @include sm {
         a {
           display: initial;
+          font-size: 16px;
         }
       }
     }
