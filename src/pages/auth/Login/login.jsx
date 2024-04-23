@@ -6,6 +6,7 @@ const Login = () => {
       <Helmet>
         <title>Login</title>
       </Helmet>
+      <h1>Ma page Login</h1>
     </div>
   );
 };
