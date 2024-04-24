@@ -9,7 +9,7 @@ const Header = () => {
         <div className="left">
           <a href="/" className="logo">
             <img src="/images/logo.png" alt="logo" />
-            <span>Booking App</span>
+            <span>Booking</span>
           </a>
           <a href="">Accueil</a>
           <a href="">A propos</a>
