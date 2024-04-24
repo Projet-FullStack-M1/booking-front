@@ -39,3 +39,11 @@
 3. Configurez votre base de données MongoDB et mettez à jour les informations de connexion dans le fichier backend/.env.
 4. Démarrez le serveur backend en exécutant `npm run dev` dans le répertoire backend.
 5. Démarrez l'application frontend en exécutant `npm run dev` dans le répertoire frontend.
+
+## Modélisation de la Base de Données
+
+La modélisation de la base de données de l'application : [Modélisation de la Base de Données](https://app.eraser.io/workspace/FRwpw5Di9DK49zmW9NR1)
+
+## Architecture de l'Application
+
+L'architecture de l'application, veuillez consulter ce lien : [Architecture de l'Application](https://app.eraser.io/workspace/FRwpw5Di9DK49zmW9NR1)
