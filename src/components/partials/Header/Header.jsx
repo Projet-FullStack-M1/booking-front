@@ -11,9 +11,9 @@ const Header = () => {
             <img src="/images/logo.png" alt="logo" />
             <span>Booking</span>
           </a>
-          <a href="">Accueil</a>
+
           <a href="">A propos</a>
-          <a href="">Contact</a>
+          <a href="/contact">Contact</a>
         </div>
         <div className="right">
           <a href="/auth/login">Connexion</a>
@@ -28,9 +28,8 @@ const Header = () => {
             />
           </div>
           <div className={open ? "menu active" : "menu"}>
-            <a href="">Accueil</a>
             <a href="">A propos</a>
-            <a href="">Contact</a>
+            <a href="/contact">Contact</a>
             <a href="/auth/login">Connexion</a>
             <a href="/auth/register" className="register">
               S&apos;enregistrer
