@@ -1,8 +1,8 @@
 # Booking App - Frontend & Backend
 
-Bienvenue dans l'application de réservation d'appartements !
-C'est un projet suite au cours de FullStack avec Vincent Zerbib
-Cette application vous permet de vendre ou de louer des appartements en ligne de manière simple et efficace.
+- \*\*Bienvenue dans l'application de réservation d'appartements !
+- \*\*C'est un projet suite au cours de FullStack avec Vincent Zerbib
+- \*\*Cette application vous permet de vendre ou de louer des appartements en ligne de manière simple et efficace.
 
 ![Booking App](./booking-front/public/images/projet.png "Booking App")
 
