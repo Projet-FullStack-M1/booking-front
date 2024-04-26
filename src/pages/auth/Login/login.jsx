@@ -63,7 +63,7 @@ const Login = () => {
           </form>
           <div className="pt-12 pb-12 text-center">
             <p className="whitespace-nowrap">
-              Don&apos;t have an account?
+              Don&apos;t have an account ?
               <a href="/auth/register" className="font-semibold underline">
                 {" "}
                 Register here.{" "}
