@@ -1,10 +1,11 @@
-@import "../../../responsive.scss";
+@import "../../../styles/helpers/mixins";
 
 nav {
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  @include displayFlex(center, space-between);
   height: 100px;
-  align-items: center;
   z-index: 1000;
 
   a {
@@ -45,11 +46,12 @@ nav {
   }
   .right {
     flex: 2;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    // display: flex;
+    // align-items: center;
+    // justify-content: flex-end;
+    @include displayFlex(center, flex-end);
     // gap: 5px;
-    background-color: #fcf5f3;
+    background-color: var(--secondary-color);
     height: 100%;
 
     @include md {
@@ -67,7 +69,7 @@ nav {
     }
 
     .register {
-      background-color: #fece51;
+      background-color: var(--primary-color);
     }
     .menuIcon {
       display: none;
@@ -86,15 +88,16 @@ nav {
       position: absolute;
       top: 0;
       right: -50%;
-      background-color: black;
-      color: white;
+      background-color: var(--black);
+      color: var(--white);
       height: 100vh;
       width: 50%;
       transition: all 1s ease;
-      display: flex;
-      align-items: center;
+      // display: flex;
+      // align-items: center;
+      // justify-content: center;
+      @include displayFlex(center, center);
       flex-direction: column;
-      justify-content: center;
       font-size: 24px;
 
       &.active {

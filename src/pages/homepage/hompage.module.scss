@@ -1,4 +1,4 @@
-@import "../../responsive.scss";
+@import "../../styles/helpers/mixins";
 .homepage {
   display: flex;
   height: 100%;
@@ -61,7 +61,7 @@
   }
   .imgContainer {
     flex: 2;
-    background-color: #fcf5f3;
+    background-color: var(--secondary-color);
     position: relative;
     display: flex;
     align-items: center;

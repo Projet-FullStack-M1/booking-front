@@ -1,4 +1,4 @@
-@import "../../../responsive.scss";
+@import "../../../styles/helpers/mixins";
 .searchbar {
   .type {
     button {
@@ -14,8 +14,8 @@
       }
 
       &.active {
-        background-color: black;
-        color: white;
+        background-color: var(--black);
+        color: var(--white);
       }
       &:first-child {
         border-top-left-radius: 5px;
@@ -71,7 +71,7 @@
     }
     button {
       cursor: pointer;
-      background-color: #fece51;
+      background-color: var(--primary-color);
       flex: 1;
       border: none;
 

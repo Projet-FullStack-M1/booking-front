@@ -1,0 +1,11 @@
+.singlepage {
+  display: flex;
+  height: 100%;
+  .details {
+    flex: 3;
+  }
+  .features {
+    flex: 2;
+    background-color: var(--secondary-color);
+  }
+}
