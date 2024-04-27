@@ -8,14 +8,12 @@ import { Link } from "react-router-dom";
 const Pin = ({ item }) => {
   return (
     <Marker position={[item.latitude, item.longitude]}>
-      {" "}
-      {/* Assurez-vous que les propriétés sont correctement orthographiées, par exemple 'latitude' et 'longitude' */}
       <Popup>
         <div className={styles.popupContainer}>
           <img src={item.img} alt="img" />
           <div className={styles.textContainer}>
-            <Link to={`/${item.id}`}>{item.title}</Link>
-            <span>{item.bedroom} bedroom</span>
+            <Link to={`/list/${item.id}`}>{item.title}</Link>
+            <span> {item.bedroom} bedroom </span>
             <b>{item.price} €</b>
           </div>
         </div>

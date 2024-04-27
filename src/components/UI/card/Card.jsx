@@ -5,12 +5,12 @@ import { Link } from "react-router-dom";
 const Card = ({ item }) => {
   return (
     <div className={styles.card}>
-      <Link to={`/${item.id}`} className={styles.imgContainer}>
+      <Link to={`/list/${item.id}`} className={styles.imgContainer}>
         <img src={item.img} alt="" />
       </Link>
       <div className={styles.textContainer}>
         <h2 className={styles.title}>
-          <Link to={`/${item.id}`}>{item.title}</Link>
+          <Link to={`/list/${item.id}`}>{item.title}</Link>
         </h2>
         <p className={styles.address}>
           <img src="/images/pin.png" alt="" />

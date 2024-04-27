@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "./Header.scss";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -7,19 +8,19 @@ const Header = () => {
     <header>
       <nav>
         <div className="left">
-          <a href="/" className="logo">
+          <Link to="/" className="logo">
             <img src="/images/logo.png" alt="logo" />
             <span>Booking</span>
-          </a>
+          </Link>
 
-          <a href="">A propos</a>
-          <a href="/contact">Contact</a>
+          <Link to="">A propos</Link>
+          <Link to="/contact">Contact</Link>
         </div>
         <div className="right">
-          <a href="/auth/login">Connexion</a>
-          <a href="/auth/register" className="register">
+          <Link to="/auth/login">Connexion</Link>
+          <Link to="/auth/register" className="register">
             S&apos;enregistrer
-          </a>
+          </Link>
           <div className="menuIcon">
             <img
               src="/images/menu.png"
@@ -28,12 +29,12 @@ const Header = () => {
             />
           </div>
           <div className={open ? "menu active" : "menu"}>
-            <a href="">A propos</a>
-            <a href="/contact">Contact</a>
-            <a href="/auth/login">Connexion</a>
-            <a href="/auth/register" className="register">
+            <Link to="">A propos</Link>
+            <Link to="/contact">Contact</Link>
+            <Link to="/auth/login">Connexion</Link>
+            <Link to="/auth/register" className="register">
               S&apos;enregistrer
-            </a>
+            </Link>
           </div>
         </div>
       </nav>
