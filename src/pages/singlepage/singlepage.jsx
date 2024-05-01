@@ -100,7 +100,7 @@ const Singlepage = () => {
           <div className={styles.buttons}>
             <button className={styles.button}>
               <img src="/images/chat.png" alt="icon" />
-              Envoyer un message
+              Message
             </button>
             <button className={styles.button}>
               <img src="/images/save.png" alt="icon" />

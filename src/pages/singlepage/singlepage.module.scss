@@ -1,13 +1,34 @@
+@import "../../styles/helpers/mixins";
+
 .singlepage {
   display: flex;
   height: 100%;
-  padding-bottom: 50px;
+
+  @include md {
+    flex-direction: column;
+    overflow: scroll;
+  }
+  @include sm {
+    flex-direction: column;
+    overflow: scroll;
+  }
   .details {
     flex: 3;
     height: 100%;
     overflow-y: scroll;
+
+    @include md {
+      flex: none;
+      height: max-content;
+      margin-bottom: 50px;
+      overflow: hidden;
+    }
     .wrapper {
       padding-right: 50px;
+
+      @include md {
+        padding-right: 0;
+      }
       .info {
         margin-top: 50px;
         .top {
@@ -71,6 +92,13 @@
     background-color: var(--secondary-color);
     height: 100%;
     overflow-y: scroll;
+
+    @include md {
+      flex: none;
+      height: max-content;
+      margin-bottom: 50px;
+      overflow: hidden;
+    }
     .wrapper {
       padding: 0px 20px;
       display: flex;
@@ -120,6 +148,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        @include lg {
+          font-size: 12px;
+        }
         .size {
           display: flex;
           align-items: center;
@@ -137,6 +169,7 @@
       .buttons {
         display: flex;
         justify-content: space-between;
+        margin-bottom: 20px;
       }
       button {
         padding: 20px;
@@ -147,6 +180,10 @@
         border: 1px solid var(--primary-color);
         border-radius: 10px;
         cursor: pointer;
+
+        @include md {
+          padding: 10px;
+        }
 
         img {
           width: 16px;
