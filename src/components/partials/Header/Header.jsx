@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./Header.scss";
 import { Link } from "react-router-dom";
+import { userData } from "../../../lib/data";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
@@ -22,12 +23,11 @@ const Header = () => {
         <div className="right">
           {user ? (
             <div className="user">
-              <img
-                src="https://static.vecteezy.com/ti/vecteur-libre/p3/5005788-user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-vector-illustration-eps10-gratuit-vectoriel.jpg"
-                alt="user"
-              />
+              <Link className="profile" to="/account/profile">
+                Profil
+              </Link>
               <span>Malick</span>
-              <Link to="/account/profile">Profil</Link>
+              <img src={userData.img} alt="user" />
             </div>
           ) : (
             <>
