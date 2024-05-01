@@ -24,7 +24,8 @@ const Header = () => {
           {user ? (
             <div className="user">
               <Link className="profile" to="/account/profile">
-                Profil
+                <div className="notification">3</div>
+                <span> Profil</span>
               </Link>
               <span>Malick</span>
               <img src={userData.img} alt="user" />

@@ -83,6 +83,10 @@ nav {
       }
       span {
         margin-right: 10px;
+
+        @include sm {
+          display: none;
+        }
       }
 
       .profile {
@@ -90,6 +94,22 @@ nav {
         padding: 12px 24px;
         border: none;
         cursor: pointer;
+        position: relative;
+
+        .notification {
+          position: absolute;
+          top: -8px;
+          right: -8px;
+          background-color: red;
+          color: white;
+          cursor: pointer;
+          border-radius: 50%;
+          width: 26px;
+          height: 26px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
       }
     }
 
