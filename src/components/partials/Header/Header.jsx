@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+
+  const user = true;
   return (
     <header>
       <nav>
@@ -18,10 +20,23 @@ const Header = () => {
           <Link to="/list">List</Link>
         </div>
         <div className="right">
-          <Link to="/auth/login">Connexion</Link>
-          <Link to="/auth/register" className="register">
-            S&apos;enregistrer
-          </Link>
+          {user ? (
+            <div className="user">
+              <img
+                src="https://static.vecteezy.com/ti/vecteur-libre/p3/5005788-user-icon-in-trendy-flat-style-isolated-on-grey-background-user-symbol-for-your-web-site-design-logo-app-ui-vector-illustration-eps10-gratuit-vectoriel.jpg"
+                alt="user"
+              />
+              <span>Malick</span>
+              <Link to="/account/profile">Profil</Link>
+            </div>
+          ) : (
+            <>
+              <Link to="/auth/login">Connexion</Link>
+              <Link to="/auth/register" className="register">
+                S&apos;enregistrer
+              </Link>
+            </>
+          )}
           <div className="menuIcon">
             <img
               src="/images/menu.png"

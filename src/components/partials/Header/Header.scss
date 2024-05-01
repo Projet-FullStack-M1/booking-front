@@ -68,6 +68,19 @@ nav {
       }
     }
 
+    .user {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+    }
+
     .register {
       background-color: var(--primary-color);
     }
