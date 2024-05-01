@@ -1,3 +1,4 @@
+import Chat from "../../../components/UI/chat/Chat";
 import List from "../../../components/UI/list/List";
 import styles from "./profile.module.scss";
 
@@ -33,7 +34,9 @@ const profile = () => {
         </div>
       </div>
       <div className={styles.chatContainer}>
-        <div className={styles.wrapper}></div>
+        <div className={styles.wrapper}>
+          <Chat />
+        </div>
       </div>
     </div>
   );
