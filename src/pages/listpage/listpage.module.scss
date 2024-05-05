@@ -1,6 +1,12 @@
+@import "../../styles/helpers/mixins";
+
 .listpage {
   display: flex;
   height: 100%;
+
+  @include md {
+    flex-direction: column;
+  }
 
   .listContainer {
     flex: 3;

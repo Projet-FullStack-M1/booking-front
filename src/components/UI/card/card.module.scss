@@ -6,12 +6,10 @@
   .imgContainer {
     flex: 2;
     height: 200px;
-    display: flex;
+    // display: flex;
 
-    @include sm {
-      img {
-        display: none;
-      }
+    @include md {
+      display: none;
     }
 
     img {
@@ -66,6 +64,7 @@
       .features {
         display: flex;
         gap: 20px;
+        font-size: 14px;
 
         .feature {
           display: flex;

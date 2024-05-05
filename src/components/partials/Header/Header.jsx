@@ -1,12 +1,25 @@
 import { useState } from "react";
 import "./Header.scss";
-import { Link } from "react-router-dom";
-import { userData } from "../../../lib/data";
+import { Link, useNavigate } from "react-router-dom";
+import apiRequest from "../../../lib/apiRequest";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
 
   const user = true;
+
+  const navigate = useNavigate();
+
+  const handleLogout = async () => {
+    try {
+      const res = apiRequest.post("auth/logout");
+      console.log(res);
+      localStorage.removeItem("user");
+      navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <header>
       <nav>
@@ -27,8 +40,9 @@ const Header = () => {
                 <div className="notification">3</div>
                 <span> Profil</span>
               </Link>
-              <span>Malick</span>
-              <img src={userData.img} alt="user" />
+              <button onClick={handleLogout} className="logout">
+                Déconnexion
+              </button>
             </div>
           ) : (
             <>
