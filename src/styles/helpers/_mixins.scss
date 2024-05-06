@@ -16,6 +16,12 @@
   }
 }
 
+@mixin xs {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
 @mixin displayFlex($alignItems, $justifyContent) {
   display: flex;
   align-items: $alignItems;

@@ -1,3 +1,4 @@
+@import "../../../styles/helpers/mixins";
 .card {
   display: flex;
   gap: 20px;
@@ -5,7 +6,11 @@
   .imgContainer {
     flex: 2;
     height: 200px;
-    display: flex;
+    // display: flex;
+
+    @include md {
+      display: none;
+    }
 
     img {
       width: 100%;
@@ -18,7 +23,8 @@
     flex: 3;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    justify-content: space-between;
+    gap: 10px;
 
     img {
       width: 16px;
@@ -58,6 +64,7 @@
       .features {
         display: flex;
         gap: 20px;
+        font-size: 14px;
 
         .feature {
           display: flex;

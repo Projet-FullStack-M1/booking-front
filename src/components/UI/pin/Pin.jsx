@@ -25,13 +25,13 @@ const Pin = ({ item }) => {
 // Ajoutez la validation des props avec PropTypes
 Pin.propTypes = {
   item: PropTypes.shape({
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
     latitude: PropTypes.number.isRequired,
     longitude: PropTypes.number.isRequired,
-    img: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-    bedroom: PropTypes.number.isRequired,
-    price: PropTypes.number.isRequired,
+    img: PropTypes.string,
+    title: PropTypes.string,
+    bedroom: PropTypes.number,
+    price: PropTypes.number,
   }).isRequired,
 };
 

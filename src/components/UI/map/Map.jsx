@@ -27,13 +27,13 @@ const Map = ({ items }) => {
 Map.propTypes = {
   items: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      latitude: PropTypes.number.isRequired,
-      longitude: PropTypes.number.isRequired,
-      img: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      bedroom: PropTypes.number.isRequired,
-      price: PropTypes.number.isRequired,
+      id: PropTypes.number.isRequired,
+      latitude: PropTypes.number,
+      longitude: PropTypes.number,
+      img: PropTypes.string,
+      title: PropTypes.string,
+      bedroom: PropTypes.number,
+      price: PropTypes.number,
     })
   ).isRequired,
 };

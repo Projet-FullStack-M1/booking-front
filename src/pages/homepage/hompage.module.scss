@@ -16,7 +16,9 @@
       @include md {
         padding: 0;
       }
-
+      @include xs {
+        gap: 30px;
+      }
       @include sm {
         justify-content: flex-start;
       }
