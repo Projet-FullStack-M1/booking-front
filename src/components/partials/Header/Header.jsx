@@ -1,20 +1,20 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import "./Header.scss";
 import { Link, useNavigate } from "react-router-dom";
 import apiRequest from "../../../lib/apiRequest";
+import { AuthContext } from "../../../context/AuthContext";
 
 const Header = () => {
   const [open, setOpen] = useState(false);
 
-  const user = true;
+  const { currentUser, updateCurrentUser } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
   const handleLogout = async () => {
     try {
-      const res = apiRequest.post("auth/logout");
-      console.log(res);
-      localStorage.removeItem("user");
+      await apiRequest.post("auth/logout");
+      updateCurrentUser(null);
       navigate("/");
     } catch (err) {
       console.log(err);
@@ -34,8 +34,10 @@ const Header = () => {
           <Link to="/list">List</Link>
         </div>
         <div className="right">
-          {user ? (
+          {currentUser ? (
             <div className="user">
+              <img src={currentUser.avatar || "/images/noavatar.jpg"} alt="" />
+              <span>{currentUser.username}</span>
               <Link className="profile" to="/account/profile">
                 <div className="notification">3</div>
                 <span> Profil</span>

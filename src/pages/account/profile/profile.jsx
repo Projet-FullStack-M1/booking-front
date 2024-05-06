@@ -1,8 +1,12 @@
+import { useContext } from "react";
 import Chat from "../../../components/UI/chat/Chat";
 import List from "../../../components/UI/list/List";
 import styles from "./profile.module.scss";
+import { AuthContext } from "../../../context/AuthContext";
 
-const profile = () => {
+const Profile = () => {
+  const { currentUser } = useContext(AuthContext);
+
   return (
     <div className={styles.profile}>
       <div className={styles.details}>
@@ -13,13 +17,17 @@ const profile = () => {
           </div>
           <div className={styles.info}>
             <span>
-              Avatar : <img src="/images/Malick.jpg" alt="user" />
+              Avatar :{" "}
+              <img
+                src={currentUser.avatar || "/images/noavatar.jpg"}
+                alt="user"
+              />
             </span>
             <span>
-              Username : <b>Malick</b>
+              Username : <b>{currentUser.username}</b>
             </span>
             <span>
-              Email : <b>ndiaye2@gmail.com</b>
+              Email : <b>{currentUser.email}</b>
             </span>
           </div>
           <div className={styles.title}>
@@ -42,4 +50,4 @@ const profile = () => {
   );
 };
 
-export default profile;
+export default Profile;

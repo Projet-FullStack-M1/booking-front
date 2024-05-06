@@ -1,15 +1,17 @@
 import { Helmet } from "react-helmet-async";
 import styles from "./login.module.scss";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Loader from "../../../components/UI/Loader/Loader";
 import apiRequest from "../../../lib/apiRequest";
+import { AuthContext } from "../../../context/AuthContext";
 
 const Login = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const { updateCurrentUser } = useContext(AuthContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -25,7 +27,8 @@ const Login = () => {
         password,
       });
 
-      localStorage.setItem("user", JSON.stringify(res.data));
+      // localStorage.setItem("user", JSON.stringify(res.data));
+      updateCurrentUser(res.data);
       navigate("/");
     } catch (err) {
       setError(err.response.data.message);
