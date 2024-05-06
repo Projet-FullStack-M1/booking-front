@@ -1,6 +1,57 @@
 import { Helmet } from "react-helmet-async";
 import styles from "./register.module.scss";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Loader from "../../../components/UI/Loader/Loader";
+
 const Register = () => {
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError("");
+    const formData = new FormData(e.target);
+    const username = formData.get("username");
+    const email = formData.get("email");
+    const password = formData.get("password");
+
+    // console.log(username, email, password);
+
+    try {
+      const res = await fetch("http://localhost:8000/api/v1/auth/register", {
+        method: "POST",
+        body: JSON.stringify({
+          username,
+          email,
+          password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!res.ok) {
+        const data = await res.json();
+        // console.log(data);
+        setError(data.message);
+        return;
+      }
+
+      // Si la réponse est ok, continuez comme prévu
+      const data = await res.json();
+      console.log(data);
+      navigate("/auth/login");
+    } catch (error) {
+      // console.log(error.message);
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  if (loading) return <Loader />;
   return (
     <div className={styles.login}>
       <Helmet>
@@ -11,7 +62,7 @@ const Register = () => {
         <div className="my-auto flex flex-col justify-center px-6 pt-8 sm:px-24 md:justify-start md:px-8 md:pt-0 lg:px-12">
           <p className="text-center text-3xl font-bold">Welcome</p>
           <p className="mt-2 text-center">Create an account</p>
-          <form className="flex flex-col pt-3 md:pt-8">
+          <form onSubmit={handleSubmit} className="flex flex-col pt-3 md:pt-8">
             <div className="flex flex-col pt-4">
               <div className=" flex overflow-hidden rounded-lg border focus-within:border-transparent focus-within:ring-2 transition focus-within:ring-[#fece51]">
                 <span className="inline-flex items-center border-r border-gray-300 bg-white px-3 text-sm text-gray-500 shadow-sm">
@@ -30,7 +81,7 @@ const Register = () => {
                 </span>
                 <input
                   type="text"
-                  id="login-email"
+                  name="username"
                   className="w-full flex-1 appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400  focus:outline-none"
                   placeholder="Username"
                 />
@@ -51,7 +102,7 @@ const Register = () => {
                 </span>
                 <input
                   type="email"
-                  id="login-email"
+                  name="email"
                   className="w-full flex-1 appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400  focus:outline-none"
                   placeholder="Email"
                 />
@@ -72,18 +123,20 @@ const Register = () => {
                 </span>
                 <input
                   type="password"
-                  id="login-password"
+                  name="password"
                   className="w-full flex-1 appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400  focus:outline-none"
                   placeholder="Password"
                 />
               </div>
             </div>
             <button
+              disabled={loading}
               type="submit"
               className="w-full rounded-lg bg-[#fece51] px-4 py-2 text-center text-base font-semibold text-white shadow-md transition ease-in hover:bg-[#fece51] focus:outline-none focus:ring-2"
             >
-              <span className="w-full"> Submit </span>
+              <span className="w-full"> Register </span>
             </button>
+            {error && <p className="text-red-500 pt-5 text-center">{error}</p>}
           </form>
           <div className="pt-12 pb-12 text-center">
             <p className="whitespace-nowrap">

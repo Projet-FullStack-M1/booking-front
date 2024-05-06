@@ -33,7 +33,7 @@ const Searchbar = () => {
         <input
           type="text"
           name="location"
-          placeholder="ville de localisation"
+          placeholder="Ville de localisation"
         />
         <input
           type="number"
