@@ -41,6 +41,7 @@ const Profile = () => {
           <List />
         </div>
       </div>
+
       <div className={styles.chatContainer}>
         <div className={styles.wrapper}>
           <Chat />

@@ -20,6 +20,9 @@ const Header = () => {
       console.log(err);
     }
   };
+
+  //  au click sur le body setOpen to false
+
   return (
     <header>
       <nav>
@@ -56,18 +59,36 @@ const Header = () => {
           )}
           <div className="menuIcon">
             <img
-              src="/images/menu.png"
+              src={open ? "/images/close.png" : "/images/menu.png"}
               alt="menu"
               onClick={() => setOpen(!open)}
             />
           </div>
-          <div className={open ? "menu active" : "menu"}>
-            <Link to="">A propos</Link>
-            <Link to="/contact">Contact</Link>
-            <Link to="/auth/login">Connexion</Link>
-            <Link to="/auth/register" className="register">
-              S&apos;enregistrer
-            </Link>
+          <div
+            onClick={() => setOpen(false)}
+            className={open ? "menu active" : "menu"}
+          >
+            {currentUser ? (
+              <>
+                <Link to="/about">A propos</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/account/profile">Profil</Link>
+
+                <button onClick={handleLogout} className="logout">
+                  Déconnexion
+                </button>
+              </>
+            ) : (
+              <>
+                <Link to="/about">A propos</Link>
+                <Link to="/contact">Contact</Link>
+                <Link to="/list">Appartements</Link>
+                <Link to="/auth/login">Connexion</Link>
+                <Link to="/auth/register" className="register">
+                  S&apos;enregistrer
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </nav>
