@@ -1,53 +1,65 @@
-import { Helmet } from "react-helmet-async";
-import styles from "./login.module.scss";
-import { useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
-import Loader from "../../../components/UI/Loader/Loader";
-import apiRequest from "../../../lib/apiRequest";
+import styles from "./update.module.scss";
 import { AuthContext } from "../../../context/AuthContext";
+import apiRequest from "../../../lib/apiRequest";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Update = () => {
   const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
+  const { currentUser, updateCurrentUser } = useContext(AuthContext);
   const navigate = useNavigate();
-
-  const { updateCurrentUser } = useContext(AuthContext);
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setLoading(true);
-    setError("");
     const formData = new FormData(e.target);
-
-    const email = formData.get("email");
-    const password = formData.get("password");
+    const { username, email, password } = Object.fromEntries(formData);
 
     try {
-      const res = await apiRequest.post("/auth/login", {
+      const res = await apiRequest.put(`/user/${currentUser.id}`, {
+        username,
         email,
         password,
       });
-      // localStorage.setItem("user", JSON.stringify(res.data));
+
       updateCurrentUser(res.data);
-      navigate("/");
+      navigate("/account/profile");
     } catch (err) {
+      console.log(err);
       setError(err.response.data.message);
-    } finally {
-      setLoading(false);
     }
   };
-  if (loading) return <Loader />;
 
   return (
-    <div className={styles.login}>
-      <Helmet>
-        <title>Login</title>
-      </Helmet>
-
-      <div className="flex w-full flex-col md:w-1/2 lg:w-1/3 m-auto pt-12">
-        <div className="my-auto flex flex-col justify-center px-6 pt-8 sm:px-24 md:justify-start md:px-8 md:pt-0 lg:px-12">
-          <p className="text-center text-3xl font-bold">Welcome</p>
-          <p className="mt-2 text-center">Login to access your account.</p>
+    <div className={styles.update}>
+      <div className={styles.formContainer}>
+        <div className="mt-40 mx-auto w-1/2 flex flex-col justify-center px-6 pt-8 sm:px-24 md:justify-start md:px-8 md:pt-0 lg:px-12">
+          <p className="text-center text-3xl font-bold">Modifier</p>
+          {/* <p className="mt-2 text-center">Create an account</p> */}
           <form onSubmit={handleSubmit} className="flex flex-col pt-3 md:pt-8">
+            <div className="flex flex-col pt-4">
+              <div className=" flex overflow-hidden rounded-lg border focus-within:border-transparent focus-within:ring-2 transition focus-within:ring-[#fece51]">
+                <span className="inline-flex items-center border-r border-gray-300 bg-white px-3 text-sm text-gray-500 shadow-sm">
+                  <svg
+                    width="15"
+                    height="15"
+                    viewBox="0 0 15 15"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M7.5 2.5C8.16304 2.5 8.79893 2.76339 9.26777 3.23223C9.73661 3.70107 10 4.33696 10 5C10 5.66304 9.73661 6.29893 9.26777 6.76777C8.79893 7.23661 8.16304 7.5 7.5 7.5C6.83696 7.5 6.20107 7.23661 5.73223 6.76777C5.26339 6.29893 5 5.66304 5 5C5 4.33696 5.26339 3.70107 5.73223 3.23223C6.20107 2.76339 6.83696 2.5 7.5 2.5ZM7.5 8.75C10.2625 8.75 12.5 9.86875 12.5 11.25V12.5H2.5V11.25C2.5 9.86875 4.7375 8.75 7.5 8.75Z"
+                      fill="gray"
+                    />
+                  </svg>
+                </span>
+                <input
+                  type="text"
+                  name="username"
+                  className="w-full flex-1 appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400  focus:outline-none"
+                  placeholder="Username"
+                  defaultValue={currentUser.username}
+                />
+              </div>
+            </div>
             <div className="flex flex-col pt-4">
               <div className=" flex overflow-hidden rounded-lg border focus-within:border-transparent focus-within:ring-2 transition focus-within:ring-[#fece51]">
                 <span className="inline-flex items-center border-r border-gray-300 bg-white px-3 text-sm text-gray-500 shadow-sm">
@@ -66,6 +78,7 @@ const Login = () => {
                   name="email"
                   className="w-full flex-1 appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400  focus:outline-none"
                   placeholder="Email"
+                  defaultValue={currentUser.email}
                 />
               </div>
             </div>
@@ -83,7 +96,6 @@ const Login = () => {
                   </svg>
                 </span>
                 <input
-                  required
                   type="password"
                   name="password"
                   className="w-full flex-1 appearance-none border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400  focus:outline-none"
@@ -92,27 +104,25 @@ const Login = () => {
               </div>
             </div>
             <button
-              disabled={loading}
+              //   disabled={loading}
               type="submit"
               className="w-full rounded-lg bg-[#fece51] px-4 py-2 text-center text-base font-semibold text-white shadow-md transition ease-in hover:bg-[#fece51] focus:outline-none focus:ring-2"
             >
-              <span className="w-full"> Login </span>
+              <span className="w-full"> Modifier </span>
             </button>
             {error && <p className="text-red-500 pt-5 text-center">{error}</p>}
           </form>
-          <div className="pt-12 pb-12 text-center">
-            <p className="whitespace-nowrap">
-              Don&apos;t have an account ?
-              <a href="/auth/register" className="font-semibold underline">
-                {" "}
-                Register here.{" "}
-              </a>
-            </p>
-          </div>
         </div>
+      </div>
+      <div className={styles.sideContainer}>
+        <img
+          src={currentUser.avatar || "/images/noavatar.jpg"}
+          alt="user"
+          className={styles.avatar}
+        />
       </div>
     </div>
   );
 };
 
-export default Login;
+export default Update;

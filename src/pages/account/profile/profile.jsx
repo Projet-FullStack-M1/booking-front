@@ -3,6 +3,7 @@ import Chat from "../../../components/UI/chat/Chat";
 import List from "../../../components/UI/list/List";
 import styles from "./profile.module.scss";
 import { AuthContext } from "../../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
   const { currentUser } = useContext(AuthContext);
@@ -13,7 +14,9 @@ const Profile = () => {
         <div className={styles.wrapper}>
           <div className={styles.title}>
             <h2>User Information</h2>
-            <button>Modifier</button>
+            <Link to="/account/profile/update">
+              <button>Modifier</button>
+            </Link>
           </div>
           <div className={styles.info}>
             <span>
@@ -41,6 +44,7 @@ const Profile = () => {
           <List />
         </div>
       </div>
+
       <div className={styles.chatContainer}>
         <div className={styles.wrapper}>
           <Chat />
