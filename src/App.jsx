@@ -8,6 +8,7 @@ import Register from "./pages/auth/register/register";
 import Contact from "./pages/contact/contact";
 import Profilepage from "./pages/account/profile/profile";
 import Aboutpage from "./pages/apropos/about";
+import Updatepage from "./pages/account/updateProfile/update";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -27,7 +28,10 @@ const App = () => {
     {
       path: "/",
       element: <RequiredAuth />,
-      children: [{ path: "/account/profile", element: <Profilepage /> }],
+      children: [
+        { path: "/account/profile", element: <Profilepage /> },
+        { path: "/account/profile/update", element: <Updatepage /> },
+      ],
     },
   ]);
   return <RouterProvider router={router} />;
