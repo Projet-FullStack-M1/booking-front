@@ -78,6 +78,9 @@ nav {
       justify-content: center;
       align-items: center;
       font-weight: bold;
+      @include sm {
+        display: none;
+      }
       button {
         cursor: pointer;
         margin: 20px;

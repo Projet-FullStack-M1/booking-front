@@ -8,8 +8,8 @@ export const AuthContextProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("user")) || null
   );
 
-  const updateCurrentUser = (user) => {
-    setCurrentUser(user);
+  const updateCurrentUser = (data) => {
+    setCurrentUser(data);
   };
 
   // Save user to local storage when currentUser changes
@@ -17,10 +17,16 @@ export const AuthContextProvider = ({ children }) => {
     localStorage.setItem("user", JSON.stringify(currentUser));
   }, [currentUser]);
 
+  const logout = () => {
+    setCurrentUser(null);
+    localStorage.removeItem("user");
+  };
+
   const context = {
     currentUser,
     setCurrentUser,
     updateCurrentUser,
+    logout,
   };
   return (
     <AuthContext.Provider value={context}>{children}</AuthContext.Provider>
