@@ -1,6 +1,5 @@
 import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import Cookies from "js-cookie";
 
 export const AuthContext = createContext();
 
@@ -21,7 +20,6 @@ export const AuthContextProvider = ({ children }) => {
   const logout = () => {
     setCurrentUser(null);
     localStorage.removeItem("user");
-    Cookies.remove("token");
   };
 
   const context = {
